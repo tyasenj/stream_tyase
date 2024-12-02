@@ -202,4 +202,44 @@ Kelas: 3H
 
 ## Praktikum 3: Injeksi Data ke Streams
 
-###
+### Langkah 1: Buka main.dart
+
+<img src = "assets/gambar_26.jpg">
+
+### Langkah 2: Tambahkan kode ini di initState
+
+<img src = "assets/gambar_27.jpg">
+
+### Langkah 3: Tetap di initState
+
+<img src = "assets/gambar_28.jpg">
+
+### Langkah 4: Run
+
+**Soal 8**
+
+- Jelaskan maksud kode langkah 1-3 tersebut!
+
+  Langkah 1: Tambahkan Variabel transformer
+
+  Mendeklarasikan variabel transformer bertipe StreamTransformer untuk memodifikasi data yang diterima dari stream.
+
+  Langkah 2: Inisialisasi transformer di initState
+
+  Membuat transformer yang:
+
+  - Mengalikan setiap nilai stream dengan 10.
+  - Menangani error dengan mengirimkan nilai -1.
+  - Menutup sink saat stream selesai.
+
+  Langkah 3: Menggunakan transformer di initState
+
+  Menambahkan transformer ke stream, lalu mendengarkan perubahan data dan error. Jika ada data, tampilkan di UI, jika error, tampilkan -1.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+<img src = "assets\W12 Jawaban Soal 8.gif">
+
+- Lalu lakukan commit dengan pesan "W12: Jawaban Soal 8".
+
+---
