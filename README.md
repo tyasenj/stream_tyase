@@ -243,3 +243,62 @@ Kelas: 3H
 - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 8".
 
 ---
+
+## Praktikum 4: Subscribe ke stream events
+
+### Langkah 1: Tambah variabel
+
+<img src = "assets/gambar_30.jpg">
+
+### Langkah 2: Edit initState()
+
+<img src = "assets/gambar_31.jpg">
+
+### Langkah 3: Tetap di initState()
+
+<img src = "assets/gambar_32.jpg">
+
+### Langkah 4: Tambah properti onDone()
+
+<img src = "assets/gambar_33.jpg">
+
+### Langkah 5: Tambah method baru
+
+<img src = "assets/gambar_34.jpg">
+
+### Langkah 6: Pindah ke method dispose()
+
+<img src = "assets/gambar_35.jpg">
+
+### Langkah 7: Pindah ke method build()
+
+<img src = "assets/gambar_36.jpg">
+
+### Langkah 8: Edit method addRandomNumber()
+
+<img src = "assets/gambar_37.jpg">
+
+### Langkah 9: Run
+
+**Soal 9**
+
+- Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!
+
+  Langkah 2 (initState)
+
+  Mendengarkan nilai dari stream yang dihasilkan.
+  Memperbarui nilai lastNumber di UI setiap kali ada data baru yang masuk ke stream.
+
+  Langkah 6 (dispose)
+
+  Digunakan untuk menghentikan stream subscription dengan memanggil subscription.cancel(), sehingga mencegah kebocoran memori ketika widget dihapus.
+
+  Langkah 8 (addRandomNumber)
+
+  Cek apakah stream controller masih aktif. Jika aktif, tambahkan angka acak ke stream. Jika tidak, tampilkan nilai -1 untuk menandakan error.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+<img src = "assets\W12 Jawaban Soal 9.gif">
+
+- Lalu lakukan commit dengan pesan "W12: Jawaban Soal 9".
