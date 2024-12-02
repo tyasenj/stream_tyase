@@ -302,3 +302,45 @@ Kelas: 3H
 <img src = "assets\W12 Jawaban Soal 9.gif">
 
 - Lalu lakukan commit dengan pesan "W12: Jawaban Soal 9".
+
+---
+
+## Praktikum 5: Multiple stream subscriptions
+
+### Langkah 1: Buka file main.dart
+
+<img src = "assets/gambar_38.jpg">
+
+### Langkah 2: Edit initState()
+
+<img src = "assets/gambar_39.jpg">
+
+### Langkah 3: Run
+
+<img src = "assets/gambar_40.jpg">
+
+**Soal 10**
+
+- Jelaskan mengapa error itu bisa terjadi ?
+
+  Error ini terjadi karena dua listener mencoba mendengarkan satu stream yang hanya mendukung single-subscription. Gunakan broadcast stream jika membutuhkan beberapa listener, atau cukup gunakan satu listener jika tidak ada kebutuhan untuk mendengarkan dua kali.
+
+### Langkah 4: Set broadcast stream
+
+<img src = "assets/gambar_41.jpg">
+
+### Langkah 5: Edit method build()
+
+<img src = "assets/gambar_42.jpg">
+
+### Langkah 6: Run
+
+- Jelaskan mengapa hal itu bisa terjadi ?
+
+  Tampilan pada aplikasi ini menunjukkan angka-angka yang terus bertambah, dipisahkan oleh tanda hubung (-). Hal ini terjadi karena stream mengirim angka acak yang ditambahkan ke dalam string value yang ditampilkan di widget Text. Setiap kali tombol "New Random Number" ditekan, angka acak baru ditambahkan ke dalam stream, dan kedua subscription mendengarkan stream yang sama, menampilkan angka yang sama dua kali. Tombol "Stop Stream" menghentikan stream dengan menutup controller.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README.
+
+    <img src = "assets\W12 Jawaban Soal 10.gif">
+
+- Lalu lakukan commit dengan pesan "W12: Jawaban Soal 10,11".

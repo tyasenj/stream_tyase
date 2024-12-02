@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'stream.dart';
+import 'stream.dart'; // Pastikan file ini sudah ada
 import 'dart:async';
 import 'dart:math';
 
@@ -33,8 +33,9 @@ class _StreamHomePageState extends State<StreamHomePage> {
   late ColorStream colorStream;
   late StreamController<int> numberStreamController;
   late NumberStream numberStream;
-  late StreamTransformer<int, int> transformer;
   late StreamSubscription subscription;
+  late StreamSubscription subscription2;
+  String value = '';
 
   @override
   void initState() {
@@ -42,27 +43,23 @@ class _StreamHomePageState extends State<StreamHomePage> {
     numberStream = NumberStream();
     numberStreamController = numberStream.controller;
 
-    // Mendapatkan stream dari numberStreamController
-    Stream stream = numberStreamController.stream;
+    // Mengatur stream sebagai broadcast stream
+    Stream stream = numberStreamController.stream.asBroadcastStream();
 
-    // Mendengarkan stream langsung
+    // Subscription pertama
     subscription = stream.listen((event) {
       setState(() {
-        lastNumber = event;
+        value += '$event - '; // Menambahkan nilai ke string value
       });
     });
 
-    subscription.onError((error) {
+    // Subscription kedua
+    subscription2 = stream.listen((event) {
       setState(() {
-        lastNumber = -1;
+        value +=
+            '$event - '; // Menambahkan nilai ke string value (dari subscription kedua)
       });
     });
-
-    subscription.onDone(() {
-      print('OnDone was called');
-    });
-
-    super.initState();
   }
 
   void stopStream() {
@@ -80,6 +77,8 @@ class _StreamHomePageState extends State<StreamHomePage> {
   @override
   void dispose() {
     subscription.cancel();
+    subscription2.cancel(); // Cancel subscription kedua
+    super.dispose();
   }
 
   void addRandomNumber() {
@@ -108,10 +107,12 @@ class _StreamHomePageState extends State<StreamHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              lastNumber == -1 ? "Error Occurred!" : lastNumber.toString(),
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+            // Text(
+            //   lastNumber == -1 ? "Error Occurred!" : lastNumber.toString(),
+            //   style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            // ),
+            // Menambahkan Text(values) sesuai Langkah 5
+            Text(" $value", style: const TextStyle(fontSize: 16)),
             ElevatedButton(
               onPressed: () => addRandomNumber(),
               child: const Text('New Random Number'),
